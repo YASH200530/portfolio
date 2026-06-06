@@ -100,18 +100,7 @@ const About = () => {
             >
               Critical Thinker
             </Badge>
-            <Badge
-              variant="secondary"
-              className="hover:scale-125 hover:shadow-[0_0_20px_rgba(168,85,247,0.6)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 ease-out cursor-default hover:z-10 relative"
-            >
-              Mentor
-            </Badge>
-            <Badge
-              variant="secondary"
-              className="hover:scale-125 hover:shadow-[0_0_20px_rgba(168,85,247,0.6)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 ease-out cursor-default hover:z-10 relative"
-            >
-              Student of knowledge
-            </Badge>
+           
           </div>
         </div>
       </div>
