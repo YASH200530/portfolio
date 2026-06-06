@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "build:analyze": "vite build --mode development && npx vite-bundle-analyzer dist/stats.html",
     "deploy:vercel": "vercel --prod",
-    "deploy:netlify": "netlify deploy --prod --dir=dist"
+    "deploy:netlify": "netlify deploy --prod --dir=dist",
+    "typecheck": "tsc --noEmit"
+
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
