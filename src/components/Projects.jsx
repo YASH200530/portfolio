@@ -195,7 +195,7 @@ const Projects = () => {
         "FastAPI",
         "Tailwind CSS",
       ],
-      demo: "/public/videos/agrovision.mp4",
+      demo: "/videos/agrovision.mp4",
       github: "https://github.com/YASH200530/Agro-Vision",
     },
     {
@@ -221,7 +221,7 @@ const Projects = () => {
         "MongoDB",
         "Express",
       ],
-      demo: "/public/videos/smartsched.mp4",
+      demo: "/videos/smartsched.mp4",
       github: "https://github.com/YASH200530/smartsched",
     },
   ];
