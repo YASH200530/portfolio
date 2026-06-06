@@ -69,7 +69,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="hover:text-primary transition-colors cursor-pointer"
                   >
-                    <span>https://www.linkedin.com/in/yash-singh-267a65319/</span>
+                    <span>LinkedIn</span>
                   </a>
                 </div>
                 <div className="flex items-center gap-4 group">
@@ -103,12 +103,6 @@ const Contact = () => {
                 </div>
                 <div className="hover:text-foreground hover:drop-shadow-[0_0_16px_rgba(255,255,255,1.2)] transition-all duration-300 cursor-default">
                   • Startup & Business collaborations
-                </div>
-                <div className="hover:text-foreground hover:drop-shadow-[0_0_16px_rgba(255,255,255,1.2)] transition-all duration-300 cursor-default">
-                  • Mentoring
-                </div>
-                <div className="hover:text-foreground hover:drop-shadow-[0_0_16px_rgba(255,255,255,1.2)] transition-all duration-300 cursor-default">
-                  • Speaking engagements
                 </div>
               </div>
             </div>
