@@ -6,7 +6,7 @@ const Navigation = () => {
   const handleResumeDownload = () => {
     // Create a link element and trigger download
     const link = document.createElement("a");
-    link.href = "/public/YASH_SINGH_CV.pdf.pdf"; // Points to the CV file in public folder
+    link.href = "/YASH_SINGH_CV.pdf"; // Points to the CV file in public folder (served at root)
     link.download = "YASH_SINGH_CV.pdf"; // Downloaded file name
     document.body.appendChild(link);
     link.click();
