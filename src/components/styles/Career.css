@@ -1,0 +1,114 @@
+.career-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  place-items: center;
+  justify-content: center;
+  position: relative;
+  opacity: 1;
+  height: auto;
+  margin: auto;
+  margin-bottom: 150px;
+  padding: 120px 0px;
+}
+
+.career-container {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.career-section h2 {
+  font-size: 45px;
+  line-height: 1.1;
+  font-weight: 900;
+  text-align: left;
+  background: linear-gradient(135deg, #a6a0ab 0%, var(--accentColor) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-top: 0;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.career-section h2>span {
+  font-family: "Geist", sans-serif;
+  font-weight: 300;
+}
+
+.career-info-philosophy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-left: 2px solid rgba(194, 164, 255, 0.15);
+  padding-left: 20px;
+  text-align: left;
+}
+
+.philosophy-text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #a6a0ab;
+  margin: 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.philosophy-text:hover {
+  color: #eae5ec;
+  transform: translateX(4px);
+}
+
+@media only screen and (min-width: 600px) {
+  .career-section h2 {
+    font-size: 50px;
+  }
+  .philosophy-text {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .career-section h2 {
+    font-size: 60px;
+  }
+  .philosophy-text {
+    font-size: 22px;
+  }
+  .career-info-philosophy {
+    padding-left: 30px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .career-section {
+    width: var(--cWidth);
+    justify-content: right;
+    max-width: 1920px;
+    min-height: 100vh;
+    padding: 0px;
+    margin-bottom: 100px;
+  }
+  
+  .career-container {
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .philosophy-text {
+    font-size: 1.8vw;
+    line-height: 2.2vw;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .philosophy-text {
+    font-size: 24px;
+    line-height: 1.6;
+  }
+}
