@@ -30,7 +30,7 @@ const Landing = ({ children }) => {
                     </div>
                     {/* Mobile photo - shows only on mobile when 3D character is hidden */}
                     <div className="mobile-photo">
-                        <img src="/public/images/WhatsApp Image 2026-06-14 at 2.01.41 AM.jpeg" alt="Yash"/>
+                        <img src="/images/WhatsApp Image 2026-06-14 at 2.01.41 AM.jpeg" alt="Yash"/>
                     </div>
                 </div>
                 {children}

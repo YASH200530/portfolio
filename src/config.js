@@ -4,7 +4,7 @@ export const config = {
         fullName: "Yash Singh",
         title: "Full-Stack Developer",
         description: "Full-Stack Developer building modern, high-performance web applications. Passionate about interactive designs, robust architectures, and clean code.",
-        image: "/public/images/WhatsApp Image 2026-06-14 at 2.01.41 AM.jpeg"
+        image: "/images/WhatsApp Image 2026-06-14 at 2.01.41 AM.jpeg"
     },
     social: {
         github: "YASH200530",

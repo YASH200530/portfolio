@@ -46,6 +46,82 @@ const Work = () => {
                 x: -translateX,
                 ease: "none",
             });
+
+            // Animate section heading as scroll begins
+            gsap.to(".work-section h2", {
+                opacity: 0.15,
+                y: -40,
+                scale: 0.95,
+                scrollTrigger: {
+                    trigger: ".work-section",
+                    start: "top top",
+                    end: "top -150px",
+                    scrub: true,
+                }
+            });
+
+            // Animating each work box as it enters the viewport horizontally
+            const boxes = document.querySelectorAll(".work-box");
+            boxes.forEach((box) => {
+                const img = box.querySelector(".work-image img, .work-image video");
+                const info = box.querySelector(".work-info");
+                
+                // Subtle scale and opacity fade for the whole box
+                gsap.fromTo(box, {
+                    opacity: 0.3,
+                    scale: 0.92,
+                }, {
+                    opacity: 1,
+                    scale: 1,
+                    ease: "sine.out",
+                    scrollTrigger: {
+                        trigger: box,
+                        containerAnimation: timeline,
+                        start: "left 98%",
+                        end: "left 65%",
+                        scrub: true,
+                    }
+                });
+
+                // Premium 3D tilt rotation and zoom on the project images/videos
+                if (img) {
+                    gsap.fromTo(img, {
+                        scale: 0.88,
+                        rotationY: -15,
+                        transformOrigin: "left center",
+                    }, {
+                        scale: 1,
+                        rotationY: 0,
+                        ease: "sine.out",
+                        scrollTrigger: {
+                            trigger: box,
+                            containerAnimation: timeline,
+                            start: "left 95%",
+                            end: "left 65%",
+                            scrub: true,
+                        }
+                    });
+                }
+                
+                // Staggered slide up for the details text
+                if (info) {
+                    gsap.fromTo(info, {
+                        opacity: 0,
+                        y: 40,
+                    }, {
+                        opacity: 1,
+                        y: 0,
+                        ease: "sine.out",
+                        scrollTrigger: {
+                            trigger: box,
+                            containerAnimation: timeline,
+                            start: "left 90%",
+                            end: "left 60%",
+                            scrub: true,
+                        }
+                    });
+                }
+            });
         });
 
         // Mobile/Tablet Scroll Entrance Animation

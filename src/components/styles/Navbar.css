@@ -81,3 +81,13 @@
     font-size: 18px;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .navbar-title {
+    display: none !important;
+  }
+  .header ul {
+    display: none !important;
+  }
+}
+
