@@ -54,7 +54,7 @@ export const config = {
         twitter: "",
         facebook: "",
         instagram: "",
-        web3forms_key: "" // Get a free access key from https://web3forms.com/ to send emails directly
+        web3forms_key: "ae22889c-c050-455f-9c91-0259b63e2fc5" // Get a free access key from https://web3forms.com/ to send emails directly
     },
     skills: {
         develop: {
