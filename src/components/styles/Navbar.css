@@ -7,8 +7,9 @@
   margin-bottom: -80px;
   box-sizing: border-box;
   position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   top: 0;
   z-index: 9999;
 }
@@ -82,12 +83,78 @@
   }
 }
 
+/* Hamburger Toggle Button */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 99999;
+}
+
+.nav-toggle .bar {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-origin: left center;
+}
+
+/* Hamburger animations when menu is active */
+.nav-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(2px, -1px);
+}
+.nav-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(2px, 1px);
+}
+
 @media only screen and (max-width: 768px) {
   .navbar-title {
     display: none !important;
   }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Transform existing menu list into slide-out menu drawer */
   .header ul {
-    display: none !important;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(11, 8, 12, 0.97);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1);
+    z-index: 99998;
+  }
+
+  .header ul.active {
+    right: 0;
+  }
+
+  .header ul li {
+    margin: 0;
+    font-size: 24px !important;
+    letter-spacing: 2px;
   }
 }
 

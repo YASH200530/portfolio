@@ -2,12 +2,7 @@ import { createContext, useContext, useEffect, useState, } from "react";
 import Loading from "../components/Loading";
 export const LoadingContext = createContext(null);
 export const LoadingProvider = ({ children }) => {
-    const [isLoading, setIsLoading] = useState(() => {
-        // Skip loading on mobile
-        if (window.innerWidth <= 768)
-            return false;
-        return true;
-    });
+    const [isLoading, setIsLoading] = useState(true);
     const [loading, setLoading] = useState(0);
     const value = {
         isLoading,
@@ -15,15 +10,17 @@ export const LoadingProvider = ({ children }) => {
         setLoading,
     };
     useEffect(() => {
-        // Auto-start animations on mobile since there's no 3D model
+        // Run progress bar on mobile automatically since there is no 3D character loading trigger
         if (window.innerWidth <= 768) {
-            import("../components/utils/initialFX").then((module) => {
-                if (module.initialFX) {
-                    setTimeout(() => {
-                        module.initialFX();
-                    }, 100);
+            let percent = 0;
+            const interval = setInterval(() => {
+                if (percent < 100) {
+                    percent += 4;
+                    setLoading(percent);
+                } else {
+                    clearInterval(interval);
                 }
-            });
+            }, 36); // 36ms * 25 steps = 900ms (0.9 second) progress
         }
     }, []);
     useEffect(() => { }, [loading]);

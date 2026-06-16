@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -8,6 +8,8 @@ import { config } from "../config";
 gsap.registerPlugin(ScrollTrigger);
 export let lenis = null;
 const Navbar = () => {
+    const [menuActive, setMenuActive] = useState(false);
+
     useEffect(() => {
         // Initialize Lenis smooth scroll
         lenis = new Lenis({
@@ -33,6 +35,7 @@ const Navbar = () => {
         links.forEach((elem) => {
             let element = elem;
             element.addEventListener("click", (e) => {
+                setMenuActive(false);
                 if (window.innerWidth > 1024) {
                     let elem = e.currentTarget;
                     let section = elem.getAttribute("data-href");
@@ -73,24 +76,29 @@ const Navbar = () => {
                         {config.developer.fullName.toUpperCase()}
                     </span>
                 </a>
-                <ul>
+                <button className={`nav-toggle ${menuActive ? "active" : ""}`} onClick={() => setMenuActive(!menuActive)} aria-label="Toggle Navigation">
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </button>
+                <ul className={menuActive ? "active" : ""}>
                     <li>
-                        <a data-href="#about" href="#about">
+                        <a data-href="#about" href="#about" onClick={() => setMenuActive(false)}>
                             <HoverLinks text="ABOUT"/>
                         </a>
                     </li>
                     <li>
-                        <a data-href="#work" href="#work">
+                        <a data-href="#work" href="#work" onClick={() => setMenuActive(false)}>
                             <HoverLinks text="PROJECTS"/>
                         </a>
                     </li>
                     <li>
-                        <a data-href="#contact" href="#contact">
+                        <a data-href="#contact" href="#contact" onClick={() => setMenuActive(false)}>
                             <HoverLinks text="CONTACT"/>
                         </a>
                     </li>
                     <li>
-                        <a href="/YASH_SINGH_CV.pdf" target="_blank" rel="noopener noreferrer" data-cursor="disable">
+                        <a href="/YASH_SINGH_CV.pdf" target="_blank" rel="noopener noreferrer" data-cursor="disable" onClick={() => setMenuActive(false)}>
                             <HoverLinks text="RESUME"/>
                         </a>
                     </li>

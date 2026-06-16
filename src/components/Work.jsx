@@ -66,14 +66,8 @@ const Work = () => {
                 const img = box.querySelector(".work-image img, .work-image video");
                 const info = box.querySelector(".work-info");
                 
-                // Subtle scale and opacity fade for the whole box
-                gsap.fromTo(box, {
-                    opacity: 0.3,
-                    scale: 0.92,
-                }, {
-                    opacity: 1,
-                    scale: 1,
-                    ease: "sine.out",
+                // Consolidate into a single ScrollTrigger timeline per box for optimal performance
+                const cardTimeline = gsap.timeline({
                     scrollTrigger: {
                         trigger: box,
                         containerAnimation: timeline,
@@ -83,43 +77,36 @@ const Work = () => {
                     }
                 });
 
-                // Premium 3D tilt rotation and zoom on the project images/videos
+                // Animate box itself (fade + scale)
+                cardTimeline.fromTo(box, {
+                    opacity: 0.3,
+                    scale: 0.95,
+                }, {
+                    opacity: 1,
+                    scale: 1,
+                    ease: "power1.out"
+                }, 0);
+
+                // Animate project media zoom
                 if (img) {
-                    gsap.fromTo(img, {
-                        scale: 0.88,
-                        rotationY: -15,
-                        transformOrigin: "left center",
+                    cardTimeline.fromTo(img, {
+                        scale: 0.9,
                     }, {
                         scale: 1,
-                        rotationY: 0,
-                        ease: "sine.out",
-                        scrollTrigger: {
-                            trigger: box,
-                            containerAnimation: timeline,
-                            start: "left 95%",
-                            end: "left 65%",
-                            scrub: true,
-                        }
-                    });
+                        ease: "power1.out"
+                    }, 0);
                 }
                 
-                // Staggered slide up for the details text
+                // Animate details slide-up
                 if (info) {
-                    gsap.fromTo(info, {
+                    cardTimeline.fromTo(info, {
                         opacity: 0,
-                        y: 40,
+                        y: 30,
                     }, {
                         opacity: 1,
                         y: 0,
-                        ease: "sine.out",
-                        scrollTrigger: {
-                            trigger: box,
-                            containerAnimation: timeline,
-                            start: "left 90%",
-                            end: "left 60%",
-                            scrub: true,
-                        }
-                    });
+                        ease: "power1.out"
+                    }, 0.05); // slight delay stagger
                 }
             });
         });

@@ -7,14 +7,21 @@ const Loading = ({ percent }) => {
     const [loaded, setLoaded] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const [clicked, setClicked] = useState(false);
-    if (percent >= 100) {
-        setTimeout(() => {
+    useEffect(() => {
+        if (percent >= 100 && !loaded) {
             setLoaded(true);
-            setTimeout(() => {
+        }
+    }, [percent, loaded]);
+
+    useEffect(() => {
+        if (loaded && !isLoaded) {
+            const timer = setTimeout(() => {
                 setIsLoaded(true);
-            }, 1000);
-        }, 600);
-    }
+            }, 800);
+            return () => clearTimeout(timer);
+        }
+    }, [loaded, isLoaded]);
+
     useEffect(() => {
         import("./utils/initialFX").then((module) => {
             if (isLoaded) {
@@ -24,7 +31,7 @@ const Loading = ({ percent }) => {
                         module.initialFX();
                     }
                     setIsLoading(false);
-                }, 900);
+                }, 400);
             }
         });
     }, [isLoaded]);
@@ -80,40 +87,33 @@ export default Loading;
 export const setProgress = (setLoading) => {
     let percent = 0;
     let interval = setInterval(() => {
-        if (percent <= 50) {
-            let rand = Math.round(Math.random() * 5);
-            percent = percent + rand;
+        if (percent < 100) {
+            percent += 4;
             setLoading(percent);
-        }
-        else {
+        } else {
             clearInterval(interval);
-            interval = setInterval(() => {
-                percent = percent + Math.round(Math.random());
-                setLoading(percent);
-                if (percent > 91) {
-                    clearInterval(interval);
-                }
-            }, 2000);
         }
-    }, 100);
+    }, 32); // 32ms * 25 steps = 800ms (0.8 second)
+
     function clear() {
         clearInterval(interval);
         setLoading(100);
     }
+
     function loaded() {
         return new Promise((resolve) => {
-            clearInterval(interval);
-            interval = setInterval(() => {
-                if (percent < 100) {
-                    percent++;
-                    setLoading(percent);
-                }
-                else {
-                    resolve(percent);
-                    clearInterval(interval);
-                }
-            }, 2);
+            if (percent >= 100) {
+                resolve(percent);
+            } else {
+                const checkInterval = setInterval(() => {
+                    if (percent >= 100) {
+                        clearInterval(checkInterval);
+                        resolve(percent);
+                    }
+                }, 10);
+            }
         });
     }
+
     return { loaded, percent, clear };
 };

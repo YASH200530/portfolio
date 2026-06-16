@@ -170,7 +170,7 @@
   max-width: var(--Lsize);
   /* height: 45px; */
   top: 50%;
-  transition: 1s;
+  transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   left: 50px;
   z-index: 9;
   transform: translateY(-50%);
@@ -361,3 +361,26 @@
     font-size: 18px;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .loading-marquee {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .loading-marquee {
+    font-size: 26px;
+  }
+  .loading-wrap {
+    --Lsize: 110px;
+  }
+  .loading-button {
+    padding: 15px 35px;
+    font-size: 15px;
+  }
+  .loading-container {
+    left: 35px;
+  }
+}
+
